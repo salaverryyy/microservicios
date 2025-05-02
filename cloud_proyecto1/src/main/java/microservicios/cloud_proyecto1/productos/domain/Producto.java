@@ -1,12 +1,9 @@
-package microservicios.cloud_proyecto1.productos;
+package microservicios.cloud_proyecto1.productos.domain;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Lookup;
+import microservicios.cloud_proyecto1.categoria.domain.Categoria;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -20,7 +17,9 @@ public class Producto {
     String descripcion;
     BigDecimal precio;
     int stock;
-    String categoria;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    Categoria categoria;
     String imagen_url;
     LocalDate fecha_creacion;
 }
