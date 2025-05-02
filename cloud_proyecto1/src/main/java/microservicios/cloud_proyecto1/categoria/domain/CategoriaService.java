@@ -3,7 +3,7 @@ package microservicios.cloud_proyecto1.categoria.domain;
 import microservicios.cloud_proyecto1.categoria.infrastructure.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import microservicios.cloud_proyecto1.categoria.domain.Categoria;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +27,7 @@ public class CategoriaService {
     public Categoria actualizarCategoria(Long id, Categoria categoria) {
         Optional<Categoria> categoriaExistente = categoriaRepository.findById(id);
         if (categoriaExistente.isPresent()) {
-            categoria.setId_categoria(id);
+            categoria.setId(id);
             return categoriaRepository.save(categoria);
         }
         throw new RuntimeException("Categoría no encontrada con ID: " + id);

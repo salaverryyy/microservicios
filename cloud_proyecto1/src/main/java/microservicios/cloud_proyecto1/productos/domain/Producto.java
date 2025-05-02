@@ -22,4 +22,14 @@ public class Producto {
     Categoria categoria;
     String imagen_url;
     LocalDate fecha_creacion;
+
+    //@Data no genera sus getters y setters por algun motivo
+    public void setId_producto(Long id_producto) {
+        this.id_producto = id_producto;
+    }
+
+    public void setFecha_creacion(LocalDate fecha_creacion) {
+        this.fecha_creacion = fecha_creacion;
+    }
+
 }

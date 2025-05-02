@@ -12,6 +12,13 @@ import lombok.Data;
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id_categoria;
+    Long id;
     String categoria;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Long getId() {
+        return id;
+    }
 }
