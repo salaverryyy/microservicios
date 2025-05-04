@@ -2,6 +2,7 @@ package microservicios.cloud_proyecto1.productos.application;
 
 import microservicios.cloud_proyecto1.productos.domain.Producto;
 import microservicios.cloud_proyecto1.productos.domain.ProductoService;
+import microservicios.cloud_proyecto1.productos.dto.ProductoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,18 +31,17 @@ public class ProductoController {
     public Producto obtenerProductoPorId(@PathVariable Long id) {
         return productoService.obtenerProductoPorId(id);
     }
-    //Todo endpoints CRUD
 
     // Crear Producto
     @PostMapping("/productos")
-    public Producto crearProducto(@RequestBody Producto producto) {
-        return productoService.crearProducto(producto);
+    public Producto crearProducto(@RequestBody ProductoDTO productoDTO) {
+        return productoService.crearProducto(productoDTO);
     }
 
     // Actualizar Producto
     @PutMapping("/productos/{id}")
-    public Producto actualizarProducto(@PathVariable Long id, @RequestBody Producto producto) {
-        return productoService.actualizarProducto(id, producto);
+    public Producto actualizarProducto(@PathVariable Long id, @RequestBody ProductoDTO productoDTO) {
+        return productoService.actualizarProducto(id, productoDTO);
     }
 
     // Eliminar Producto

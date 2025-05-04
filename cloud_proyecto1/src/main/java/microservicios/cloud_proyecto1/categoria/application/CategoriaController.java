@@ -2,6 +2,7 @@ package microservicios.cloud_proyecto1.categoria.application;
 
 import microservicios.cloud_proyecto1.categoria.domain.Categoria;
 import microservicios.cloud_proyecto1.categoria.domain.CategoriaService;
+import microservicios.cloud_proyecto1.categoria.dto.CategoriaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,18 +19,17 @@ public class CategoriaController {
     public List<Categoria> obtenerTodasLasCategorias() {
         return categoriaService.obtenerTodasLasCategorias();
     }
-    //Todo endpoints CRUD
 
     // Crear una categoría
     @PostMapping("/categorias")
-    public Categoria crearCategoria(@RequestBody Categoria categoria) {
-        return categoriaService.crearCategoria(categoria);
+    public Categoria crearCategoria(@RequestBody CategoriaDTO categoriaDTO) {
+        return categoriaService.crearCategoria(categoriaDTO);
     }
 
     // Actualizar una categoría
     @PutMapping("/categorias/{id}")
-    public Categoria actualizarCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
-        return categoriaService.actualizarCategoria(id, categoria);
+    public Categoria actualizarCategoria(@PathVariable Long id, @RequestBody CategoriaDTO categoriaDTO) {
+        return categoriaService.actualizarCategoria(id, categoriaDTO);
     }
 
     // Eliminar una categoría

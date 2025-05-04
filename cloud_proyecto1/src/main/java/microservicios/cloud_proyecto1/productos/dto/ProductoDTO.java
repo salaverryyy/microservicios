@@ -1,40 +1,20 @@
-package microservicios.cloud_proyecto1.productos.domain;
+package microservicios.cloud_proyecto1.productos.dto;
 
-
-import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import microservicios.cloud_proyecto1.categoria.domain.Categoria;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
-@Getter
-@Setter
-public class Producto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id_producto;
-    String descripcion;
-    BigDecimal precio;
-    int stock;
-    @ManyToOne
-    Categoria categoria;
-    String imagen_url;
-    LocalDate fecha_creacion;
+public class ProductoDTO {
 
-    //@Data no genera sus getters y setters por algun motivo
-    // Getters y Setters manuales
-    public Long getId_producto() {
-        return id_producto;
-    }
+    private String descripcion;
+    private BigDecimal precio;
+    private int stock;
+    private Long categoriaId;  // Usamos el ID de la categoría, no la entidad completa
+    private String imagen_url;
+    private LocalDate fecha_creacion;
 
-    public void setId_producto(Long id_producto) {
-        this.id_producto = id_producto;
-    }
-
+    // Getters y Setters
     public String getDescripcion() {
         return descripcion;
     }
@@ -59,12 +39,12 @@ public class Producto {
         this.stock = stock;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Long getCategoriaId() {
+        return categoriaId;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategoriaId(Long categoriaId) {
+        this.categoriaId = categoriaId;
     }
 
     public String getImagen_url() {
