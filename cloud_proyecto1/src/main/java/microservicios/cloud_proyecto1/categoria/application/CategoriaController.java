@@ -26,15 +26,17 @@ public class CategoriaController {
         return categoriaService.crearCategoria(categoriaDTO);
     }
 
+
+
     // Actualizar una categoría
     @PutMapping("/categorias/{id}")
-    public Categoria actualizarCategoria(@PathVariable Long id, @RequestBody CategoriaDTO categoriaDTO) {
+    public Categoria actualizarCategoria(@PathVariable Integer id, @RequestBody CategoriaDTO categoriaDTO) {
         return categoriaService.actualizarCategoria(id, categoriaDTO);
     }
 
     // Eliminar una categoría
     @DeleteMapping("/categorias/{id}")
-    public void eliminarCategoria(@PathVariable Long id) {
+    public void eliminarCategoria(@PathVariable Integer id) {
         categoriaService.eliminarCategoria(id);
     }
 }

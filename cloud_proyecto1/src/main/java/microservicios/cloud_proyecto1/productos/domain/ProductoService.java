@@ -7,9 +7,10 @@ import microservicios.cloud_proyecto1.productos.insfrastructure.ProductoReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ProductoService {
@@ -26,12 +27,13 @@ public class ProductoService {
     }
 
     // Obtener productos filtrados por categoría
-    public List<Producto> obtenerProductosPorCategoria(Long categoriaId) {
-        return productoRepository.findByCategoria_id(categoriaId);
+    public List<Producto> obtenerProductosPorCategoria(List<Integer> categoriaIds) {
+        return productoRepository.findByCategorias_IdIn(categoriaIds);
     }
 
+
     // Obtener un producto por su ID
-    public Producto obtenerProductoPorId(Long id) {
+    public Producto obtenerProductoPorId(Integer id) {
         Optional<Producto> producto = productoRepository.findById(id);
         return producto.orElseThrow(() -> new RuntimeException("Producto no encontrado con ID: " + id));
     }
@@ -44,18 +46,23 @@ public class ProductoService {
         producto.setPrecio(productoDTO.getPrecio());
         producto.setStock(productoDTO.getStock());
         producto.setImagen_url(productoDTO.getImagen_url());
-        producto.setFecha_creacion(productoDTO.getFecha_creacion() != null ? productoDTO.getFecha_creacion() : LocalDate.now());
+        producto.setFecha_creacion(productoDTO.getFecha_creacion());
+        producto.setProveedor(productoDTO.getProveedor());
 
-        // Obtener la categoría y asignarla al producto
-        Categoria categoria = categoriaService.obtenerCategoriaPorId(productoDTO.getCategoriaId());
-        producto.setCategoria(categoria);
+        // Asignar las categorías utilizando los IDs en el ProductoDTO
+        Set<Categoria> categorias = new HashSet<>();
+        for (Integer categoriaId : productoDTO.getCategoriaIds()) {
+            Categoria categoria = categoriaService.obtenerCategoriaPorId(categoriaId);
+            categorias.add(categoria);
+        }
+        producto.setCategorias(categorias);
 
         // Guardar el producto en la base de datos
         return productoRepository.save(producto);
     }
 
     // Actualizar un producto existente
-    public Producto actualizarProducto(Long id, ProductoDTO productoDTO) {
+    public Producto actualizarProducto(Integer id, ProductoDTO productoDTO) {
         Optional<Producto> productoExistente = productoRepository.findById(id);
         if (productoExistente.isPresent()) {
             Producto producto = productoExistente.get();
@@ -63,11 +70,16 @@ public class ProductoService {
             producto.setPrecio(productoDTO.getPrecio());
             producto.setStock(productoDTO.getStock());
             producto.setImagen_url(productoDTO.getImagen_url());
-            producto.setFecha_creacion(productoDTO.getFecha_creacion() != null ? productoDTO.getFecha_creacion() : LocalDate.now());
+            producto.setFecha_creacion(productoDTO.getFecha_creacion());
+            producto.setProveedor(productoDTO.getProveedor());
 
-            // Actualizar la categoría del producto
-            Categoria categoria = categoriaService.obtenerCategoriaPorId(productoDTO.getCategoriaId());
-            producto.setCategoria(categoria);
+            // Actualizar las categorías del producto
+            Set<Categoria> categorias = new HashSet<>();
+            for (Integer categoriaId : productoDTO.getCategoriaIds()) {
+                Categoria categoria = categoriaService.obtenerCategoriaPorId(categoriaId);
+                categorias.add(categoria);
+            }
+            producto.setCategorias(categorias);
 
             return productoRepository.save(producto);
         }
@@ -75,7 +87,7 @@ public class ProductoService {
     }
 
     // Eliminar un producto
-    public void eliminarProducto(Long id) {
+    public void eliminarProducto(Integer id) {
         if (productoRepository.existsById(id)) {
             productoRepository.deleteById(id);
         } else {

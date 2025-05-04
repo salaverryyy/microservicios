@@ -22,13 +22,13 @@ public class ProductoController {
 
     // endpoint para obtener productos filtrados por categoría (utilizando query params)
     @GetMapping("/productos/categoria")
-    public List<Producto> obtenerProductosPorCategoria(@RequestParam Long categoriaId) {
+    public List<Producto> obtenerProductosPorCategoria(@RequestParam List<Integer> categoriaId) {
         return productoService.obtenerProductosPorCategoria(categoriaId);
     }
 
     // endpoint para obtener un producto por su ID
     @GetMapping("/productos/{id}")
-    public Producto obtenerProductoPorId(@PathVariable Long id) {
+    public Producto obtenerProductoPorId(@PathVariable Integer id) {
         return productoService.obtenerProductoPorId(id);
     }
 
@@ -40,13 +40,13 @@ public class ProductoController {
 
     // Actualizar Producto
     @PutMapping("/productos/{id}")
-    public Producto actualizarProducto(@PathVariable Long id, @RequestBody ProductoDTO productoDTO) {
+    public Producto actualizarProducto(@PathVariable Integer id, @RequestBody ProductoDTO productoDTO) {
         return productoService.actualizarProducto(id, productoDTO);
     }
 
     // Eliminar Producto
     @DeleteMapping("/productos/{id}")
-    public void eliminarProducto(@PathVariable Long id) {
+    public void eliminarProducto(@PathVariable Integer id) {
         productoService.eliminarProducto(id);
     }
 }

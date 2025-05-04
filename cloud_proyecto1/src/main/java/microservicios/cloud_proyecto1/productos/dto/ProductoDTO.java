@@ -4,15 +4,17 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Set;
 
 public class ProductoDTO {
 
     private String descripcion;
-    private BigDecimal precio;
+    private float precio;
     private int stock;
-    private Long categoriaId;  // Usamos el ID de la categoría, no la entidad completa
     private String imagen_url;
-    private LocalDate fecha_creacion;
+    private String fecha_creacion;
+    private Set<Integer> categoriaIds;
+    private String proveedor;
 
     // Getters y Setters
     public String getDescripcion() {
@@ -23,11 +25,11 @@ public class ProductoDTO {
         this.descripcion = descripcion;
     }
 
-    public BigDecimal getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
@@ -39,13 +41,14 @@ public class ProductoDTO {
         this.stock = stock;
     }
 
-    public Long getCategoriaId() {
-        return categoriaId;
+    public Set<Integer> getCategoriaIds() {
+        return categoriaIds;
     }
 
-    public void setCategoriaId(Long categoriaId) {
-        this.categoriaId = categoriaId;
+    public void setCategoriaIds(Set<Integer> categoriaIds) {
+        this.categoriaIds = categoriaIds;
     }
+
 
     public String getImagen_url() {
         return imagen_url;
@@ -55,12 +58,19 @@ public class ProductoDTO {
         this.imagen_url = imagen_url;
     }
 
-    public LocalDate getFecha_creacion() {
+    public String getFecha_creacion() {
         return fecha_creacion;
     }
 
-    public void setFecha_creacion(LocalDate fecha_creacion) {
+    public void setFecha_creacion(String fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
     }
 
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }
 }

@@ -9,29 +9,33 @@ import microservicios.cloud_proyecto1.categoria.domain.Categoria;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
-@Getter
-@Setter
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id_producto;
+    int id_producto;
     String descripcion;
-    BigDecimal precio;
+    float precio;
     int stock;
-    @ManyToOne
-    Categoria categoria;
+    @ManyToMany
+    @JoinTable(
+            name="tiene",
+            joinColumns = @JoinColumn(name = "producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
+    private Set<Categoria> categorias;
     String imagen_url;
-    LocalDate fecha_creacion;
+    String fecha_creacion;
+    String proveedor;
 
     //@Data no genera sus getters y setters por algun motivo
-    // Getters y Setters manuales
-    public Long getId_producto() {
+    public int getId_producto() {
         return id_producto;
     }
 
-    public void setId_producto(Long id_producto) {
+    public void setId_producto(int id_producto) {
         this.id_producto = id_producto;
     }
 
@@ -43,11 +47,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public BigDecimal getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
@@ -59,12 +63,12 @@ public class Producto {
         this.stock = stock;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Set<Categoria> getCategorias() {
+        return categorias;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategorias(Set<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
     public String getImagen_url() {
@@ -75,12 +79,20 @@ public class Producto {
         this.imagen_url = imagen_url;
     }
 
-    public LocalDate getFecha_creacion() {
+    public String getFecha_creacion() {
         return fecha_creacion;
     }
 
-    public void setFecha_creacion(LocalDate fecha_creacion) {
+    public void setFecha_creacion(String fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
+    }
+
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
     }
 
 }
