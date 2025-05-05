@@ -40,24 +40,23 @@ public class ProductoService {
 
     // Crear un nuevo producto a partir de un ProductoDTO
     public Producto crearProducto(ProductoDTO productoDTO) {
-        // Convertir el DTO a la entidad Producto
         Producto producto = new Producto();
+        producto.setNombre(productoDTO.getNombre()); // Asignar el nombre
         producto.setDescripcion(productoDTO.getDescripcion());
         producto.setPrecio(productoDTO.getPrecio());
         producto.setStock(productoDTO.getStock());
         producto.setImagen_url(productoDTO.getImagen_url());
         producto.setFecha_creacion(productoDTO.getFecha_creacion());
         producto.setProveedor(productoDTO.getProveedor());
-
-        // Asignar las categorías utilizando los IDs en el ProductoDTO
+    
+        // Asignar las categorías
         Set<Categoria> categorias = new HashSet<>();
         for (Integer categoriaId : productoDTO.getCategoriaIds()) {
             Categoria categoria = categoriaService.obtenerCategoriaPorId(categoriaId);
             categorias.add(categoria);
         }
         producto.setCategorias(categorias);
-
-        // Guardar el producto en la base de datos
+    
         return productoRepository.save(producto);
     }
 
@@ -66,21 +65,22 @@ public class ProductoService {
         Optional<Producto> productoExistente = productoRepository.findById(id);
         if (productoExistente.isPresent()) {
             Producto producto = productoExistente.get();
+            producto.setNombre(productoDTO.getNombre()); // Actualizar el nombre
             producto.setDescripcion(productoDTO.getDescripcion());
             producto.setPrecio(productoDTO.getPrecio());
             producto.setStock(productoDTO.getStock());
             producto.setImagen_url(productoDTO.getImagen_url());
             producto.setFecha_creacion(productoDTO.getFecha_creacion());
             producto.setProveedor(productoDTO.getProveedor());
-
-            // Actualizar las categorías del producto
+    
+            // Actualizar las categorías
             Set<Categoria> categorias = new HashSet<>();
             for (Integer categoriaId : productoDTO.getCategoriaIds()) {
                 Categoria categoria = categoriaService.obtenerCategoriaPorId(categoriaId);
                 categorias.add(categoria);
             }
             producto.setCategorias(categorias);
-
+    
             return productoRepository.save(producto);
         }
         throw new RuntimeException("Producto no encontrado con ID: " + id);

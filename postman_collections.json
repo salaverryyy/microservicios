@@ -1,0 +1,201 @@
+{
+    "info": {
+        "name": "API Productos y Categorías",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+        },
+        "item": [
+        {
+            "name": "Productos",
+            "item": [
+            {
+                "name": "Obtener producto por ID",
+                "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8001/productos/:id",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["productos", ":id"],
+                    "variable": [
+                    {
+                        "key": "id",
+                        "value": "1"
+                    }
+                    ]
+                }
+                }
+            },
+            {
+                "name": "Crear producto",
+                "request": {
+                "method": "POST",
+                "header": [
+                    {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"nombre\": \"Laptop\",\n  \"descripcion\": \"Laptop de alta gama\",\n  \"precio\": 1500.99,\n  \"stock\": 20,\n  \"imagen_url\": \"https://example.com/laptop.jpg\",\n  \"fecha_creacion\": \"2025-05-04\",\n  \"categoriaIds\": [1],\n  \"proveedor\": \"Proveedor A\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8001/productos",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["productos"]
+                }
+                }
+            },
+            {
+                "name": "Actualizar producto",
+                "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"nombre\": \"Laptop Actualizada\",\n  \"descripcion\": \"Laptop de alta gama con mejoras\",\n  \"precio\": 1600.50,\n  \"stock\": 15,\n  \"imagen_url\": \"https://example.com/laptop-updated.jpg\",\n  \"fecha_creacion\": \"2025-05-05\",\n  \"categoriaIds\": [1],\n  \"proveedor\": \"Proveedor B\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8001/productos/:id",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["productos", ":id"],
+                    "variable": [
+                    {
+                        "key": "id",
+                        "value": "1"
+                    }
+                    ]
+                }
+                }
+            },
+            {
+                "name": "Eliminar producto",
+                "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8001/productos/:id",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["productos", ":id"],
+                    "variable": [
+                    {
+                        "key": "id",
+                        "value": "1"
+                    }
+                    ]
+                }
+                }
+            },
+            {
+                "name": "Obtener todos los productos",
+                "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8001/productos",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["productos"]
+                }
+                }
+            }
+            ]
+        },
+        {
+            "name": "Categorías",
+            "item": [
+            {
+                "name": "Obtener todas las categorías",
+                "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8001/categorias",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["categorias"]
+                }
+                }
+            },
+            {
+                "name": "Crear categoría",
+                "request": {
+                "method": "POST",
+                "header": [
+                    {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"nombre\": \"Electrónica\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8001/categorias",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["categorias"]
+                }
+                }
+            },
+            {
+                "name": "Actualizar categoría",
+                "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"nombre\": \"Electrónica Actualizada\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8001/categorias/:id",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["categorias", ":id"],
+                    "variable": [
+                    {
+                        "key": "id",
+                        "value": "1"
+                    }
+                    ]
+                }
+                }
+            },
+            {
+                "name": "Eliminar categoría",
+                "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8001/categorias/:id",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["categorias", ":id"],
+                    "variable": [
+                    {
+                        "key": "id",
+                        "value": "1"
+                    }
+                    ]
+                }
+                }
+            }
+            ]
+        }
+    ]
+}

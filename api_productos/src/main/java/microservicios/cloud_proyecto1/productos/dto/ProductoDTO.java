@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class ProductoDTO {
 
+    private String nombre;
     private String descripcion;
     private float precio;
     private int stock;
@@ -17,6 +18,14 @@ public class ProductoDTO {
     private String proveedor;
 
     // Getters y Setters
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }

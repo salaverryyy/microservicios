@@ -16,6 +16,7 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id_producto;
+    private String nombre;
     String descripcion;
     float precio;
     int stock;
@@ -37,6 +38,14 @@ public class Producto {
 
     public void setId_producto(int id_producto) {
         this.id_producto = id_producto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
