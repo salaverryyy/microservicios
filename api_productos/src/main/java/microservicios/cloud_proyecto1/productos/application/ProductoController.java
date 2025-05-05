@@ -5,6 +5,9 @@ import microservicios.cloud_proyecto1.productos.domain.ProductoService;
 import microservicios.cloud_proyecto1.productos.dto.ProductoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -16,8 +19,11 @@ public class ProductoController {
 
     // endpoint para obtener todos los productos (sin filtrar por categoría)
     @GetMapping("/productos")
-    public List<Producto> obtenerTodosLosProductos() {
-        return productoService.obtenerTodosLosProductos();
+    public Page<Producto> obtenerTodosLosProductos(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productoService.obtenerTodosLosProductos(pageable);
     }
 
     // endpoint para obtener productos filtrados por categoría (utilizando query params)

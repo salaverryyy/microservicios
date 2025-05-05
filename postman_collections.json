@@ -13,14 +13,31 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:8001/productos/:id",
+                    "raw": "http://localhost:8001/productos/1",
                     "host": ["localhost"],
                     "port": "8001",
-                    "path": ["productos", ":id"],
-                    "variable": [
+                    "path": ["productos", "1"]
+                }
+                }
+            },
+            {
+                "name": "Obtener todos los productos (paginados)",
+                "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8001/productos?page=0&size=10",
+                    "host": ["localhost"],
+                    "port": "8001",
+                    "path": ["productos"],
+                    "query": [
                     {
-                        "key": "id",
-                        "value": "1"
+                        "key": "page",
+                        "value": "0"
+                    },
+                    {
+                        "key": "size",
+                        "value": "10"
                     }
                     ]
                 }
@@ -38,7 +55,7 @@
                 ],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n  \"nombre\": \"Laptop\",\n  \"descripcion\": \"Laptop de alta gama\",\n  \"precio\": 1500.99,\n  \"stock\": 20,\n  \"imagen_url\": \"https://example.com/laptop.jpg\",\n  \"fecha_creacion\": \"2025-05-04\",\n  \"categoriaIds\": [1],\n  \"proveedor\": \"Proveedor A\"\n}"
+                    "raw": "{\n  \"nombre\": \"Smartphone\",\n  \"descripcion\": \"Teléfono inteligente de última generación\",\n  \"precio\": 799.99,\n  \"stock\": 50,\n  \"imagen_url\": \"https://example.com/smartphone.jpg\",\n  \"fecha_creacion\": \"2025-05-05\",\n  \"categoriaIds\": [1],\n  \"proveedor\": \"Proveedor XYZ\"\n}"
                 },
                 "url": {
                     "raw": "http://localhost:8001/productos",
@@ -60,19 +77,13 @@
                 ],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n  \"nombre\": \"Laptop Actualizada\",\n  \"descripcion\": \"Laptop de alta gama con mejoras\",\n  \"precio\": 1600.50,\n  \"stock\": 15,\n  \"imagen_url\": \"https://example.com/laptop-updated.jpg\",\n  \"fecha_creacion\": \"2025-05-05\",\n  \"categoriaIds\": [1],\n  \"proveedor\": \"Proveedor B\"\n}"
+                    "raw": "{\n  \"nombre\": \"Smartphone Pro\",\n  \"descripcion\": \"Teléfono inteligente con características avanzadas\",\n  \"precio\": 999.99,\n  \"stock\": 30,\n  \"imagen_url\": \"https://example.com/smartphone-pro.jpg\",\n  \"fecha_creacion\": \"2025-05-06\",\n  \"categoriaIds\": [1],\n  \"proveedor\": \"Proveedor XYZ\"\n}"
                 },
                 "url": {
-                    "raw": "http://localhost:8001/productos/:id",
+                    "raw": "http://localhost:8001/productos/1",
                     "host": ["localhost"],
                     "port": "8001",
-                    "path": ["productos", ":id"],
-                    "variable": [
-                    {
-                        "key": "id",
-                        "value": "1"
-                    }
-                    ]
+                    "path": ["productos", "1"]
                 }
                 }
             },
@@ -82,29 +93,29 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:8001/productos/:id",
+                    "raw": "http://localhost:8001/productos/1",
                     "host": ["localhost"],
                     "port": "8001",
-                    "path": ["productos", ":id"],
-                    "variable": [
-                    {
-                        "key": "id",
-                        "value": "1"
-                    }
-                    ]
+                    "path": ["productos", "1"]
                 }
                 }
             },
             {
-                "name": "Obtener todos los productos",
+                "name": "Obtener productos por categoría",
                 "request": {
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:8001/productos",
+                    "raw": "http://localhost:8001/productos/categoria?categoriaId=1",
                     "host": ["localhost"],
                     "port": "8001",
-                    "path": ["productos"]
+                    "path": ["productos", "categoria"],
+                    "query": [
+                    {
+                        "key": "categoriaId",
+                        "value": "1"
+                    }
+                    ]
                 }
                 }
             }
@@ -160,19 +171,13 @@
                 ],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n  \"nombre\": \"Electrónica Actualizada\"\n}"
+                    "raw": "{\n  \"nombre\": \"Electrónica Avanzada\"\n}"
                 },
                 "url": {
-                    "raw": "http://localhost:8001/categorias/:id",
+                    "raw": "http://localhost:8001/categorias/1",
                     "host": ["localhost"],
                     "port": "8001",
-                    "path": ["categorias", ":id"],
-                    "variable": [
-                    {
-                        "key": "id",
-                        "value": "1"
-                    }
-                    ]
+                    "path": ["categorias", "1"]
                 }
                 }
             },
@@ -182,16 +187,10 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:8001/categorias/:id",
+                    "raw": "http://localhost:8001/categorias/1",
                     "host": ["localhost"],
                     "port": "8001",
-                    "path": ["categorias", ":id"],
-                    "variable": [
-                    {
-                        "key": "id",
-                        "value": "1"
-                    }
-                    ]
+                    "path": ["categorias", "1"]
                 }
                 }
             }

@@ -4,6 +4,8 @@ import microservicios.cloud_proyecto1.categoria.domain.Categoria;
 import microservicios.cloud_proyecto1.categoria.domain.CategoriaService;
 import microservicios.cloud_proyecto1.productos.dto.ProductoDTO;
 import microservicios.cloud_proyecto1.productos.insfrastructure.ProductoRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +24,8 @@ public class ProductoService {
     private CategoriaService categoriaService;
 
     // Obtener todos los productos (sin filtrar por categoría)
-    public List<Producto> obtenerTodosLosProductos() {
-        return productoRepository.findAll();
+    public Page<Producto> obtenerTodosLosProductos(Pageable pageable) {
+        return productoRepository.findAll(pageable);
     }
 
     // Obtener productos filtrados por categoría
