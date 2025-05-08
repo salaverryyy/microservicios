@@ -7,34 +7,14 @@ services:
     ports:
       - "8001:8001"
     environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_NAME: cloud_proyecto1
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
-    depends_on:
-      - db
-    networks:
-      - internal_network
-    
-
-  db:
-    image: postgres:15
-    container_name: postgres_db
-    restart: always
-    environment:
-      POSTGRES_DB: cloud_proyecto1
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      DB_HOST: 35.169.164.120
+      DB_PORT: 8004        
+      DB_NAME: bd_productos
+      DB_USERNAME: root
+      DB_PASSWORD: 72942250
     networks:
       - internal_network
 
-volumes:
-  postgres_data:
 
 networks:
   internal_network:
