@@ -1,10 +1,7 @@
 package microservicios.cloud_proyecto1.productos.domain;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import microservicios.cloud_proyecto1.categoria.domain.Categoria;
 
 import java.math.BigDecimal;
@@ -12,26 +9,43 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
+@Table(name = "producto")
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id_producto;
+    @Column(name = "id_prod")
+    private int id_producto;
+
+    @Column(name = "nombre", nullable = false)
     private String nombre;
-    String descripcion;
-    float precio;
-    int stock;
+
+    @Column(name = "direccion", nullable = false)
+    private String direccion;
+
+    @Column(name = "precio", precision = 10, scale = 2, nullable = false)
+    private BigDecimal precio;
+
+    @Column(name = "stock", nullable = false)
+    private int stock;
+
+    @Column(name = "imagen_url")
+    private String imagen_url;
+
+    @Column(name = "fecha_creacion", nullable = false)
+    private LocalDate fecha_creacion;
+
+    @Column(name = "proveedor", nullable = false)
+    private String proveedor;
+
     @ManyToMany
     @JoinTable(
-            name="tiene",
-            joinColumns = @JoinColumn(name = "producto_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id")
+        name = "tiene", // Nombre de la tabla intermedia
+        joinColumns = @JoinColumn(name = "id_producto", referencedColumnName = "id_prod"), // Clave foránea hacia Producto
+        inverseJoinColumns = @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria") // Clave foránea hacia Categoria
     )
     private Set<Categoria> categorias;
-    String imagen_url;
-    String fecha_creacion;
-    String proveedor;
 
-    //@Data no genera sus getters y setters por algun motivo
+    // Getters y setters
     public int getId_producto() {
         return id_producto;
     }
@@ -48,19 +62,19 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public float getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 
@@ -72,14 +86,6 @@ public class Producto {
         this.stock = stock;
     }
 
-    public Set<Categoria> getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(Set<Categoria> categorias) {
-        this.categorias = categorias;
-    }
-
     public String getImagen_url() {
         return imagen_url;
     }
@@ -88,11 +94,11 @@ public class Producto {
         this.imagen_url = imagen_url;
     }
 
-    public String getFecha_creacion() {
+    public LocalDate getFecha_creacion() {
         return fecha_creacion;
     }
 
-    public void setFecha_creacion(String fecha_creacion) {
+    public void setFecha_creacion(LocalDate fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
     }
 
@@ -104,4 +110,11 @@ public class Producto {
         this.proveedor = proveedor;
     }
 
+    public Set<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(Set<Categoria> categorias) {
+        this.categorias = categorias;
+    }
 }

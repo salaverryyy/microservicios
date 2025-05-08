@@ -3,15 +3,22 @@ package microservicios.cloud_proyecto1.categoria.dto;
 public class CategoriaDTO {
 
     private String nombre;
+    private String descripcion; // Agregado
 
-    // Getter debe coincidir con el nombre del campo
+    // Getters y setters
     public String getNombre() {
         return nombre;
     }
 
-    // Setter ya está correcto
-    public void setNombre(String categoria) {
-        this.nombre = categoria;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }
-

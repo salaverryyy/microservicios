@@ -4,6 +4,7 @@ import microservicios.cloud_proyecto1.categoria.infrastructure.CategoriaReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import microservicios.cloud_proyecto1.categoria.dto.CategoriaDTO;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -22,10 +23,9 @@ public class CategoriaService {
     public Categoria crearCategoria(CategoriaDTO categoriaDTO) {
         Categoria categoria = new Categoria();
         categoria.setNombre(categoriaDTO.getNombre());
-        System.out.println("Categoria creada con nombre: " + categoria.getNombre());  // Verificación
+        categoria.setDescripcion(categoriaDTO.getDescripcion()); // Asignar descripción
         return categoriaRepository.save(categoria);
     }
-
 
     // Actualizar una categoría existente a partir de un CategoriaDTO
     public Categoria actualizarCategoria(Integer id, CategoriaDTO categoriaDTO) {
@@ -33,6 +33,7 @@ public class CategoriaService {
         if (categoriaExistente.isPresent()) {
             Categoria categoria = categoriaExistente.get();
             categoria.setNombre(categoriaDTO.getNombre());
+            categoria.setDescripcion(categoriaDTO.getDescripcion()); // Actualizar descripción
             return categoriaRepository.save(categoria);
         }
         throw new RuntimeException("Categoría no encontrada con ID: " + id);
