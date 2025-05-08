@@ -7,7 +7,7 @@ services:
     ports:
       - "8001:8001"
     environment:
-      DB_HOST: 35.169.164.120
+      DB_HOST: 172.31.16.52
       DB_PORT: 8004        
       DB_NAME: bd_productos
       DB_USERNAME: root
