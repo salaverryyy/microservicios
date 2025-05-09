@@ -26,10 +26,14 @@ public class ProductoController {
         return productoService.obtenerTodosLosProductos(pageable);
     }
 
-    // endpoint para obtener productos filtrados por categoría (utilizando query params)
+    // endpoint para obtener productos filtrados por categoría (paginable)
     @GetMapping("/productos/categoria")
-    public List<Producto> obtenerProductosPorCategoria(@RequestParam List<Integer> categoriaId) {
-        return productoService.obtenerProductosPorCategoria(categoriaId);
+    public Page<Producto> obtenerProductosPorCategoria(
+            @RequestParam List<Integer> categoriaId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productoService.obtenerProductosPorCategoria(categoriaId, pageable);
     }
 
     // endpoint para obtener un producto por su ID

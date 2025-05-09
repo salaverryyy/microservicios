@@ -9,4 +9,5 @@ import java.util.List;
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     Page<Producto> findAll(Pageable pageable);
     List<Producto> findByCategorias_IdIn(List<Integer> categoriaIds);
+    Page<Producto> findByCategorias_IdIn(List<Integer> categoriaIds, Pageable pageable);
 }

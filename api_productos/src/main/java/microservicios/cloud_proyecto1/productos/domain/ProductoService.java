@@ -29,8 +29,8 @@ public class ProductoService {
     }
 
     // Obtener productos filtrados por categoría
-    public List<Producto> obtenerProductosPorCategoria(List<Integer> categoriaIds) {
-        return productoRepository.findByCategorias_IdIn(categoriaIds);
+    public Page<Producto> obtenerProductosPorCategoria(List<Integer> categoriaIds, Pageable pageable) {
+        return productoRepository.findByCategorias_IdIn(categoriaIds, pageable);
     }
 
     // Obtener un producto por su ID
