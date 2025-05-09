@@ -4,6 +4,9 @@ FROM openjdk:21-jdk-slim
 # Establece el directorio de trabajo
 WORKDIR /app
 
+# Instala el cliente de MySQL
+RUN apt update && apt install -y default-mysql-client
+
 # Copia el archivo JAR generado al contenedor
 COPY target/cloud_proyecto1-0.0.1-SNAPSHOT.jar app.jar
 
