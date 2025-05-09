@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class ProductoController {
 
