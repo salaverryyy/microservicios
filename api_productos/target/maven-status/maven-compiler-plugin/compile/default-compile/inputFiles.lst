@@ -1,0 +1,11 @@
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\categoria\application\CategoriaController.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\categoria\domain\Categoria.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\categoria\domain\CategoriaService.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\categoria\dto\CategoriaDTO.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\categoria\infrastructure\CategoriaRepository.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\CloudProyecto1Application.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\productos\application\ProductoController.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\productos\domain\Producto.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\productos\domain\ProductoService.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\productos\dto\ProductoDTO.java
+D:\Proyectos\cloud-2025-1\microservicios\api_productos\src\main\java\microservicios\cloud_proyecto1\productos\insfrastructure\ProductoRepository.java

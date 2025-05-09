@@ -1,0 +1,11 @@
+microservicios\cloud_proyecto1\categoria\dto\CategoriaDTO.class
+microservicios\cloud_proyecto1\categoria\infrastructure\CategoriaRepository.class
+microservicios\cloud_proyecto1\categoria\domain\Categoria.class
+microservicios\cloud_proyecto1\productos\insfrastructure\ProductoRepository.class
+microservicios\cloud_proyecto1\productos\domain\Producto.class
+microservicios\cloud_proyecto1\categoria\domain\CategoriaService.class
+microservicios\cloud_proyecto1\categoria\application\CategoriaController.class
+microservicios\cloud_proyecto1\CloudProyecto1Application.class
+microservicios\cloud_proyecto1\productos\domain\ProductoService.class
+microservicios\cloud_proyecto1\productos\dto\ProductoDTO.class
+microservicios\cloud_proyecto1\productos\application\ProductoController.class
